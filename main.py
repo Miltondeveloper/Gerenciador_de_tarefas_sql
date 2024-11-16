@@ -32,5 +32,10 @@ frame_baixo.grid(row=1, column=0,sticky=NSEW,padx=0,pady=1)
 frame_direita = Frame(janela, width=400, height=403, bg=co1,relief='flat')
 frame_direita.grid(row=0, column=1, rowspan=2, padx=1,pady=0,sticky=NSEW)
 
+# Label cima
+
+app_nome = Label(frame_cima,text='Gerenciador de Tarefas',anchor=NW, font=('Ivy 13 bold'), bg=co2,fg=co1, relief='flat')
+app_nome.place(x=10,y=20)
+
 
 janela.mainloop()
