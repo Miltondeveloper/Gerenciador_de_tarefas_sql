@@ -22,7 +22,7 @@ co9 = "#e9edf5"   # sky blue
 
 janela = Tk()
 janela.title("")
-janela.geometry("1043x400")
+janela.geometry("950x400")
 janela.configure(background = co9)
 janela.resizable(width=FALSE, height=FALSE)
 
@@ -94,6 +94,7 @@ b_deletar.place(x=195,y=270)
 #Lista para cabeçalho
 tabela_head = ['ID', 'Nome da Tarefa', 'Data de início', 'Data de término', 'Prioridade', 'Descrição']
 
+# criando a tabela
 tree = ttk.Treeview(frame_direita, selectmode="extended", columns=tabela_head, show='headings')
 
 #Scroll vertical
