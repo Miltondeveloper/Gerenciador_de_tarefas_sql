@@ -79,8 +79,17 @@ e_descricao = Entry(frame_baixo, width=45, justify='left', relief='solid')
 e_descricao.place(x=15,y=220)
 
 #Botão inserir
-b_inserir = Button(frame_baixo,text='Inserir Tarefa',width=12,anchor=NW, font=('Ivy 9 bold'), bg=co6,fg=co1, relief='raised', overrelief='ridge')
-b_inserir.place(x=15,y=270)
+b_inserir = Button(frame_baixo,text='     Inserir',width=10,anchor=NW, font=('Ivy 9 bold'), bg=co6,fg=co1, relief='raised', overrelief='ridge')
+b_inserir.place(x=10,y=270)
+
+#Botão atualizar
+b_atualizar = Button(frame_baixo,text='  Atualizar',width=10,anchor=NW, font=('Ivy 9 bold'), bg=co2,fg=co1, relief='raised', overrelief='ridge')
+b_atualizar.place(x=95,y=270)
+
+#Botão deletar
+b_deletar = Button(frame_baixo,text='    Deletar',width=10,anchor=NW, font=('Ivy 9 bold'), bg=co7,fg=co1, relief='raised', overrelief='ridge')
+b_deletar.place(x=180,y=270)
+
 
 
 
