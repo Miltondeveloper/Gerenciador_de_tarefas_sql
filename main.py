@@ -22,7 +22,7 @@ co9 = "#e9edf5"   # sky blue
 
 janela = Tk()
 janela.title("")
-janela.geometry("800x400")
+janela.geometry("1043x400")
 janela.configure(background = co9)
 janela.resizable(width=FALSE, height=FALSE)
 
@@ -100,10 +100,28 @@ tree = ttk.Treeview(frame_direita, selectmode="extended", columns=tabela_head, s
 vsb = ttk.Scrollbar(frame_direita, orient="vertical", command=tree.yview)
 
 #Scroll horizontal
-vsb = ttk.Scrollbar(frame_direita, orient="horizontal", command=tree.xview)
+hsb = ttk.Scrollbar(frame_direita, orient="horizontal", command=tree.xview)
 
+tree.configure(yscrollcommand=vsb.set, xscrollcommand=hsb.set)
 
+tree.grid(column=0, row=0, sticky='nsew')
+vsb.grid(column=1, row=0, sticky='ns')
+hsb.grid(column=0, row=1, sticky='ew')
+frame_direita.grid_rowconfigure(0, weight=12)
 
+hd=["nw", "nw", "nw", "nw", "center", "center"]
+h=[30, 170, 100, 100, 100, 120]
+n=0
+
+for col in tabela_head:
+    tree.heading(col, text=col.title(), anchor=CENTER)
+    # ajustando o tamanho da coluna para o cabeçalho
+    tree.column(col, width=h[n], anchor=hd[n])
+
+    n+=1
+
+#for item in lista:
+    #tree.insert('', 'end', values=item)
 
 
 
