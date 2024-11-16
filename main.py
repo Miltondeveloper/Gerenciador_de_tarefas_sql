@@ -78,5 +78,11 @@ l_descricao.place(x=10,y=190)
 e_descricao = Entry(frame_baixo, width=45, justify='left', relief='solid')
 e_descricao.place(x=15,y=220)
 
+#Botão inserir
+b_inserir = Button(frame_baixo,text='Inserir Tarefa',width=12,anchor=NW, font=('Ivy 9 bold'), bg=co6,fg=co1, relief='raised', overrelief='ridge')
+b_inserir.place(x=15,y=270)
+
+
+
 
 janela.mainloop()
