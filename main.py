@@ -1,5 +1,9 @@
 # importando o custom tkinter
 from tkinter import *
+from tkinter import font
+
+# Importando calendário
+from tkcalendar import Calendar, DateEntry
 
 ################# cores ###############
 co0 = "#f0f3f5"  # Preta
@@ -36,6 +40,43 @@ frame_direita.grid(row=0, column=1, rowspan=2, padx=1,pady=0,sticky=NSEW)
 
 app_nome = Label(frame_cima,text='Gerenciador de Tarefas',anchor=NW, font=('Ivy 13 bold'), bg=co2,fg=co1, relief='flat')
 app_nome.place(x=10,y=20)
+
+# Configurando frame baixo
+
+# Nome da tarefa
+l_nome = Label(frame_baixo,text='Nome da Tarefa *',anchor=NW, font=('Ivy 10 bold'), bg=co1,fg=co4, relief='flat')
+l_nome.place(x=10,y=10)
+
+e_nome = Entry(frame_baixo, width=45, justify='left', relief='solid')
+e_nome.place(x=15,y=40)
+
+# Data de inicio
+l_cal = Label(frame_baixo,text='Data de início *',anchor=NW, font=('Ivy 10 bold'), bg=co1,fg=co4, relief='flat')
+l_cal.place(x=10,y=70)
+
+e_cal = DateEntry(frame_baixo, width=12, background='darkblue', foreground='white', borderwidth=2)
+e_cal.place(x=15,y=100)
+
+# Data de término
+l_cal = Label(frame_baixo,text='Data de término *',anchor=NW, font=('Ivy 10 bold'), bg=co1,fg=co4, relief='flat')
+l_cal.place(x=150,y=70)
+
+e_cal = DateEntry(frame_baixo, width=12, background='darkblue', foreground='white', borderwidth=2)
+e_cal.place(x=155,y=100)
+
+# Nível de prioridade da tarefa
+l_estado = Label(frame_baixo,text='Nível de prioridade da Tarefa *',anchor=NW, font=('Ivy 10 bold'), bg=co1,fg=co4, relief='flat')
+l_estado.place(x=10,y=130)
+
+e_estado = Entry(frame_baixo, width=25, justify='left', relief='solid')
+e_estado.place(x=15,y=160)
+
+# Descrição da tarefa
+l_descricao = Label(frame_baixo,text='Descrição da tarefa *',anchor=NW, font=('Ivy 10 bold'), bg=co1,fg=co4, relief='flat')
+l_descricao.place(x=10,y=190)
+
+e_descricao = Entry(frame_baixo, width=45, justify='left', relief='solid')
+e_descricao.place(x=15,y=220)
 
 
 janela.mainloop()
