@@ -1,6 +1,7 @@
 # importando o custom tkinter
 from tkinter import *
 from tkinter import font
+from tkinter import ttk
 
 # Importando calendário
 from tkcalendar import Calendar, DateEntry
@@ -21,7 +22,7 @@ co9 = "#e9edf5"   # sky blue
 
 janela = Tk()
 janela.title("")
-janela.geometry("800x453")
+janela.geometry("800x400")
 janela.configure(background = co9)
 janela.resizable(width=FALSE, height=FALSE)
 
@@ -89,6 +90,19 @@ b_atualizar.place(x=105,y=270)
 #Botão deletar
 b_deletar = Button(frame_baixo,text='Deletar',width=10, font=('Ivy 9 bold'), bg=co7,fg=co1, relief='raised', overrelief='ridge')
 b_deletar.place(x=195,y=270)
+
+#Lista para cabeçalho
+tabela_head = ['ID', 'Nome da Tarefa', 'Data de início', 'Data de término', 'Prioridade', 'Descrição']
+
+tree = ttk.Treeview(frame_direita, selectmode="extended", columns=tabela_head, show='headings')
+
+#Scroll vertical
+vsb = ttk.Scrollbar(frame_direita, orient="vertical", command=tree.yview)
+
+#Scroll horizontal
+vsb = ttk.Scrollbar(frame_direita, orient="horizontal", command=tree.xview)
+
+
 
 
 
