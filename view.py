@@ -40,17 +40,18 @@ def mostrar_info():
 
 
 
-'''
-lista = ['Concluir projeto integrador', 1]
+
+
 # U = Update/atualizar
 
-with conex:
-    cur = conex.cursor()
-    query = "UPDATE lista_de_tarefas SET Nome_da_tarefa=? WHERE id=?"
-    cur.execute(query, lista)
+def atualizar_informacao(i):
+    with conex:
+        cur = conex.cursor()
+        query = "UPDATE lista_de_tarefas SET Nome_da_tarefa=?, Data_de_inicio=?, Data_de_Termino=?, Prioridade=?, Descrição=? WHERE id=?"
+        cur.execute(query, i)
 
 
-
+'''
 lista = [1]
 # D = Delete/apagar
 

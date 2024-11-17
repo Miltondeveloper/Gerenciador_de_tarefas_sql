@@ -46,7 +46,11 @@ frame_direita.grid(row=0, column=1, rowspan=2, padx=1,pady=0,sticky=NSEW)
 app_nome = Label(frame_cima,text='Gerenciador de Tarefas',anchor=NW, font=('Ivy 13 bold'), bg=co2,fg=co1, relief='flat')
 app_nome.place(x=10,y=20)
 
-#função inserir
+# variavel global tree
+global tree
+
+
+# função inserir
 def inserir():
     nome = e_nome.get()
     inicio = e_cal.get()
@@ -59,7 +63,7 @@ def inserir():
     if nome=="":
         messagebox.showerror('Error', 'O nome não pode ser vazio')
     else:
-        inserir_info(lista)
+        view.inserir_info(lista)
         messagebox.showinfo('Sucesso', 'Os dados foram inseridos com sucesso!')
 
         e_nome.delete(0, 'end')
@@ -68,12 +72,72 @@ def inserir():
         e_estado.delete(0, 'end')
         e_descricao.delete(0, 'end')
 
+    # Apaga todos os dados inseridos e deixa a tela de digitação limpa
     for widget in frame_direita.winfo_children():
         widget.destroy()
 
     mostrar()
 
 
+
+# função atualizar
+
+
+def atualizar():
+    try:
+        treev_dados = tree.focus()
+        treev_dicionario = tree.item(treev_dados)
+        treev_lista = treev_dicionario['values']
+
+        valor_id = treev_lista[0]
+
+        e_nome.delete(0, 'end')
+        e_cal.delete(0, 'end')
+        e_cal2.delete(0, 'end')
+        e_estado.delete(0, 'end')
+        e_descricao.delete(0, 'end')
+
+        e_nome.insert(0, treev_lista[1])
+        e_cal.insert(0, treev_lista[2])
+        e_cal2.insert(0, treev_lista[3])
+        e_estado.insert(0, treev_lista[4])
+        e_descricao.insert(0, treev_lista[5])
+
+        def update():
+            nome = e_nome.get()
+            inicio = e_cal.get()
+            termino = e_cal2.get()
+            estado = e_estado.get()
+            descricao = e_descricao.get()
+
+            lista = [nome, inicio, termino, estado, descricao, valor_id]
+
+            if nome=="":
+                messagebox.showerror('Error', 'O nome não pode ser vazio')
+            else:
+                view.atualizar_informacao(lista)
+                messagebox.showinfo('Sucesso', 'Os dados foram atualizados com sucesso!')
+
+                e_nome.delete(0, 'end')
+                e_cal.delete(0, 'end')
+                e_cal2.delete(0, 'end')
+                e_estado.delete(0, 'end')
+                e_descricao.delete(0, 'end')
+
+            # Apaga todos os dados inseridos e deixa a tela de digitação limpa
+            for widget in frame_direita.winfo_children():
+                widget.destroy()
+            
+            mostrar()
+
+        #Botão atualizar
+        b_confirmar = Button(frame_baixo,command=update, text='Confirmar',width=10, font=('Ivy 9 bold'), bg=co2,fg=co1, relief='raised', overrelief='ridge')
+        b_confirmar.place(x=105,y=320)
+
+       
+
+    except IndexError:
+        messagebox.showerror('Error', 'Selecione um dos dados na tabela')
 
 # Configurando frame baixo
 
@@ -117,7 +181,7 @@ b_inserir = Button(frame_baixo,command=inserir, text='Inserir',width=10,font=('I
 b_inserir.place(x=15,y=270)
 
 #Botão atualizar
-b_atualizar = Button(frame_baixo,text='Atualizar',width=10, font=('Ivy 9 bold'), bg=co2,fg=co1, relief='raised', overrelief='ridge')
+b_atualizar = Button(frame_baixo,command=atualizar, text='Atualizar',width=10, font=('Ivy 9 bold'), bg=co2,fg=co1, relief='raised', overrelief='ridge')
 b_atualizar.place(x=105,y=270)
 
 #Botão deletar
@@ -125,6 +189,9 @@ b_deletar = Button(frame_baixo,text='Deletar',width=10, font=('Ivy 9 bold'), bg=
 b_deletar.place(x=195,y=270)
 
 def mostrar():
+
+    global tree
+
     lista = view.mostrar_info()
     
 #Lista para cabeçalho
