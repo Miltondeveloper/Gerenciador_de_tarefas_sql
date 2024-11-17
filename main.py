@@ -10,6 +10,7 @@ from tkcalendar import Calendar, DateEntry
 
 #importando views
 import view
+
 ################# cores ###############
 co0 = "#f0f3f5"  # Preta
 co1 = "#feffff"  # branca
@@ -26,7 +27,7 @@ co9 = "#e9edf5"   # sky blue
 
 janela = Tk()
 janela.title("")
-janela.geometry("1043x453")
+janela.geometry("950x453")
 janela.configure(background = co9)
 janela.resizable(width=FALSE, height=FALSE)
 
@@ -124,6 +125,8 @@ def atualizar():
                 e_estado.delete(0, 'end')
                 e_descricao.delete(0, 'end')
 
+                
+
             # Apaga todos os dados inseridos e deixa a tela de digitação limpa
             for widget in frame_direita.winfo_children():
                 widget.destroy()
@@ -194,11 +197,13 @@ l_estado.place(x=10,y=130)
 e_estado = ttk.Combobox(frame_baixo, width=20, justify='left', values=listaDePrioridade)
 e_estado.place(x=15,y=160)
 
-# Descrição da tarefa
-l_descricao = Label(frame_baixo,text='Descrição da tarefa *',anchor=NW, font=('Ivy 10 bold'), bg=co1,fg=co4, relief='flat')
+# Estado da tarefa
+listaEstado = ["em Andamento", "Concluída", "em Atraso"]
+l_descricao = Label(frame_baixo,text='Estado da tarefa *',anchor=NW, font=('Ivy 10 bold'), bg=co1,fg=co4, relief='flat')
 l_descricao.place(x=10,y=190)
 
-e_descricao = Entry(frame_baixo, width=45, justify='left', relief='solid')
+e_descricao = ttk.Combobox(frame_baixo, width=20, justify='left', values=listaEstado)
+e_descricao.set("em Andamento")
 e_descricao.place(x=15,y=220)
 
 #Botão inserir
@@ -220,7 +225,7 @@ def mostrar():
     lista = view.mostrar_info()
     
 #Lista para cabeçalho
-    tabela_head = ['ID', 'Nome da Tarefa', 'Data de início', 'Data de término', 'Prioridade', 'Descrição']
+    tabela_head = ['ID', 'Nome da Tarefa', 'Data de início', 'Data de término', 'Prioridade', 'Estado']
 
 # criando a tabela
     tree = ttk.Treeview(frame_direita, selectmode="extended", columns=tabela_head, show='headings')
