@@ -141,6 +141,8 @@ def atualizar():
 
 
 # função deletar
+
+
 def deletar():
     try:
         treev_dados = tree.focus()
@@ -184,10 +186,12 @@ e_cal2 = DateEntry(frame_baixo, width=12, background='darkblue', foreground='whi
 e_cal2.place(x=155,y=100)
 
 # Nível de prioridade da tarefa
+listaDePrioridade = ["Baixa", "Intermediária", "Alta", "Urgente"]
+
 l_estado = Label(frame_baixo,text='Nível de prioridade da Tarefa *',anchor=NW, font=('Ivy 10 bold'), bg=co1,fg=co4, relief='flat')
 l_estado.place(x=10,y=130)
 
-e_estado = Entry(frame_baixo, width=25, justify='left', relief='solid')
+e_estado = ttk.Combobox(frame_baixo, width=20, justify='left', values=listaDePrioridade)
 e_estado.place(x=15,y=160)
 
 # Descrição da tarefa
