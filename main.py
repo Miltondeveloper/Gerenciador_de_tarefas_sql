@@ -4,12 +4,12 @@ from tkinter import font
 from tkinter import ttk
 from tkinter import messagebox
 
+
 # Importando calendário
 from tkcalendar import Calendar, DateEntry
 
 #importando views
-from view import *
-
+import view
 ################# cores ###############
 co0 = "#f0f3f5"  # Preta
 co1 = "#feffff"  # branca
@@ -125,8 +125,8 @@ b_deletar = Button(frame_baixo,text='Deletar',width=10, font=('Ivy 9 bold'), bg=
 b_deletar.place(x=195,y=270)
 
 def mostrar():
-
-
+    lista = view.mostrar_info()
+    
 #Lista para cabeçalho
     tabela_head = ['ID', 'Nome da Tarefa', 'Data de início', 'Data de término', 'Prioridade', 'Descrição']
 
@@ -157,9 +157,11 @@ def mostrar():
 
         n+=1
 
-    lista = mostrar_info()
+    for item in lista:
+        tree.insert('', 'end', values=item)
 
     
+
 #chamando a função mostrar
 mostrar()
 
