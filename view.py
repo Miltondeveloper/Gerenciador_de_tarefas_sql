@@ -51,12 +51,11 @@ def atualizar_informacao(i):
         cur.execute(query, i)
 
 
-'''
-lista = [1]
+
 # D = Delete/apagar
 
-with conex:
-    cur = conex.cursor()
-    query = "DELETE FROM lista_de_tarefas WHERE id=?"
-    cur.execute(query, lista)
-'''
+def deletar_info(i):
+    with conex:
+        cur = conex.cursor()
+        query = "DELETE FROM lista_de_tarefas WHERE id=?"
+        cur.execute(query, i)

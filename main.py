@@ -139,6 +139,27 @@ def atualizar():
     except IndexError:
         messagebox.showerror('Error', 'Selecione um dos dados na tabela')
 
+
+# função deletar
+def deletar():
+    try:
+        treev_dados = tree.focus()
+        treev_dicionario = tree.item(treev_dados)
+        treev_lista = treev_dicionario['values']
+
+        valor_id = [treev_lista[0]]
+
+        view.deletar_info(valor_id)
+        messagebox.showinfo('Sucesso', 'Os dados foram deletados da tabela com sucesso!')
+
+        for widget in frame_direita.winfo_children():
+                widget.destroy()
+
+        mostrar()
+
+    except IndexError:
+        messagebox.showerror('Error', 'Selecione um dos dados na tabela')
+
 # Configurando frame baixo
 
 # Nome da tarefa
@@ -185,7 +206,7 @@ b_atualizar = Button(frame_baixo,command=atualizar, text='Atualizar',width=10, f
 b_atualizar.place(x=105,y=270)
 
 #Botão deletar
-b_deletar = Button(frame_baixo,text='Deletar',width=10, font=('Ivy 9 bold'), bg=co7,fg=co1, relief='raised', overrelief='ridge')
+b_deletar = Button(frame_baixo,command=deletar, text='Deletar',width=10, font=('Ivy 9 bold'), bg=co7,fg=co1, relief='raised', overrelief='ridge')
 b_deletar.place(x=195,y=270)
 
 def mostrar():
